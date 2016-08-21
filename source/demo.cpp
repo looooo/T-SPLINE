@@ -67,8 +67,8 @@ int main(void)
    cout << "=====================================================\n";
    cout << "\n";
 
-   //SimpleDemoPtr demo = makePtr<SimpleDemo>();
-   MouseDemoPtr demo = makePtr<MouseDemo>();
+   SimpleDemoPtr demo = makePtr<SimpleDemo>();
+   // MouseDemoPtr demo = makePtr<MouseDemo>();
    TSplinePtr spline = demo->findTSpline();
    std::string splinename = spline->getName();
 

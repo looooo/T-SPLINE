@@ -3,7 +3,7 @@
 
 project(tspline)
 
-add_library(tspline 
+add_library(tspline SHARED
 			utils.cpp
 			basis.cpp
 			splbase.cpp
@@ -22,7 +22,7 @@ add_library(tspline
 			tessellator.cpp
 			writer.cpp
 			validator.cpp)
-add_library(rhino 
+add_library(rhino SHARED
 			rhparser.cpp
 			rhbuilder.cpp
 			rhspreader.cpp)
@@ -79,3 +79,5 @@ ELSE()
 	INSTALL(TARGETS tspline rhino DESTINATION lib/x86/release CONFIGURATIONS Release)
 	INSTALL(TARGETS tspline rhino DESTINATION lib/x86/debug CONFIGURATIONS Debug)
 ENDIF()
+
+INSTALL(TARGETS tspline LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

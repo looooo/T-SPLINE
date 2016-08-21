@@ -2,7 +2,7 @@
 # 
 
 project(newmat)
-add_library(newmat
+add_library(newmat SHARED
   bandmat.cpp
   cholesky.cpp
   evalue.cpp
@@ -39,3 +39,5 @@ ELSE()
 	INSTALL(TARGETS newmat DESTINATION lib/x86/release CONFIGURATIONS Release)
 	INSTALL(TARGETS newmat DESTINATION lib/x86/debug CONFIGURATIONS Debug)
 ENDIF()
+
+INSTALL(TARGETS newmat LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
