@@ -13,6 +13,7 @@
 #include "visitor.h"
 #include "utils.h"
 #include "extractor.h"
+#include "rhbuilder.h"
 
 namespace py = pybind11;
 
@@ -294,6 +295,11 @@ void init_tspline(py::module &m)
         .def("getPoints", &getTriMeshPoints)
         .def("getNormals", &getTriMeshNormals)
         .def("getFaces", &getTriMeshFaces);
+
+    py::class_<RhBuilder, RhBuilderPtr>(m, "RhBuilder", "docs")
+        .def(py::init<const string &>())
+        .def("findTSpline", &RhBuilder::findTSpline)
+        .def("findTGroup", &RhBuilder::findTGroup);
 
     m.def("findLinks", &findTLinkByStartEndVertices);
     m.def("prepareTJunctions", &prepareTJunctions);

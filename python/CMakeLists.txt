@@ -12,7 +12,7 @@ add_library(_tspline SHARED tspline_pyext.cpp)
 set_target_properties(_tspline PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tspline)
 set_target_properties(_tspline PROPERTIES PREFIX "")
 set_target_properties(_tspline PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
-target_link_libraries(_tspline tspline newmat)
+target_link_libraries(_tspline tspline newmat rhino)
 
 configure_file(__init__.py "../tspline/__init__.py" COPYONLY)
 
