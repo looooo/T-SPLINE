@@ -3,7 +3,7 @@
 
 project(tspline)
 
-add_library(tspline SHARED
+add_library(tspline
 			utils.cpp
 			basis.cpp
 			splbase.cpp
@@ -22,7 +22,7 @@ add_library(tspline SHARED
 			tessellator.cpp
 			writer.cpp
 			validator.cpp)
-add_library(rhino SHARED
+add_library(rhino
 			rhparser.cpp
 			rhbuilder.cpp
 			rhspreader.cpp)
@@ -46,6 +46,8 @@ target_link_libraries(tsm2gpl rhino tspline newmat)
 add_executable(tsm2stp 
 			tsm2stp.cpp)
 target_link_libraries(tsm2stp rhino tspline newmat)
+
+set_property(TARGET tspline rhino PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 find_package(OpenMP)
 if(OPENMP_FOUND)
@@ -79,5 +81,3 @@ ELSE()
 	INSTALL(TARGETS tspline rhino DESTINATION lib/x86/release CONFIGURATIONS Release)
 	INSTALL(TARGETS tspline rhino DESTINATION lib/x86/debug CONFIGURATIONS Debug)
 ENDIF()
-
-INSTALL(TARGETS tspline rhino LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

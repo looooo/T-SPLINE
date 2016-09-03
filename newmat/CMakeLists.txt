@@ -2,7 +2,7 @@
 # 
 
 project(newmat)
-add_library(newmat SHARED
+add_library(newmat
   bandmat.cpp
   cholesky.cpp
   evalue.cpp
@@ -29,6 +29,9 @@ add_library(newmat SHARED
   newfft.cpp
   nm_misc.cpp)
 
+
+set_property(TARGET newmat PROPERTY POSITION_INDEPENDENT_CODE ON)
+
 FILE(GLOB_RECURSE include_list "*.h")
 INSTALL(FILES ${include_list} DESTINATION include)
 
@@ -39,5 +42,3 @@ ELSE()
 	INSTALL(TARGETS newmat DESTINATION lib/x86/release CONFIGURATIONS Release)
 	INSTALL(TARGETS newmat DESTINATION lib/x86/debug CONFIGURATIONS Debug)
 ENDIF()
-
-INSTALL(TARGETS newmat LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
